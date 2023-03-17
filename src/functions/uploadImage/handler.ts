@@ -5,7 +5,7 @@ const s3 = new S3()
 
 const uploadImage =  async(event) => { 
 
-  const Key = event.body.key
+  const Key = `${event.body.key}.jpeg`
   const s3Params = {
     Bucket: process.env.BUCKET_NAME,
     Key,
