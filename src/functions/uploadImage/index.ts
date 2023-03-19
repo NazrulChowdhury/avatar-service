@@ -7,7 +7,13 @@ export default {
       http: {
         method: 'post',
         path: 'uploadImage',     
-        cors :true
+        cors :true,
+        authorizer: {
+          type: "COGNITO_USER_POOLS",
+          authorizerId: {
+            Ref: "CognitoAuthorizer"
+          }
+        }
       },
     },
   ], 
@@ -19,14 +25,6 @@ export default {
     ],
     Resource:"arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*"
   }]
-  /* authorizer: {
-    name: "cognitoAuthorizer",
-    type: "COGNITO_USER_POOLS",
-    arn: "arn:aws:cognito-idp:eu-west-2:${env:AWS_ACCOUNT_ID}:userpool/eu-west-2_q949XNcbI",
-    identitySource : 'method.request.header.Authorization', //token-source
-    scopes : ['openid'], 
-   // claims : ['profile']
-  }, */
 };
 
 

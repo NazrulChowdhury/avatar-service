@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript'
 import { uploadImage }from '@functions'
-import { AvatarBucket, AvatarBucketPolicy } from '@resources/auctionBucket';
+import { AvatarBucket, AvatarBucketPolicy } from '@resources/avatarBucket';
+import { CognitoAuthorizer } from '@resources/cognitoAuthorizer';
 
 const serverlessConfiguration: AWS = {
   service: 'ProfileAvatarService',
@@ -27,7 +28,8 @@ const serverlessConfiguration: AWS = {
   resources:{ 
     Resources: { 
       AvatarBucket,
-      AvatarBucketPolicy
+      AvatarBucketPolicy,
+      CognitoAuthorizer
     }
  
   },
