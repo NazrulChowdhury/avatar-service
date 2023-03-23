@@ -12,7 +12,8 @@ export default {
           type: "COGNITO_USER_POOLS",
           authorizerId: {
             Ref: "CognitoAuthorizer"
-          }
+          },
+          scopes : ['openid']
         }
       },
     },
